@@ -14,12 +14,12 @@ func StartServer() {
 	db := model.SetupModels()
 
 	router.Use(func(c *gin.Context) {
-		c.Set("db", db)
+		c.Set(dbKey, db)
 		c.Next()
 	})
 	setupRoutes(router)
 
-	if err := router.Run(strings.Join([]string{"localhost", port}, ":")); err != nil {
+	if err := router.Run(strings.Join([]string{URL, port}, ":")); err != nil {
 		fmt.Printf(err.Error(), gin.Logger())
 	}
 }

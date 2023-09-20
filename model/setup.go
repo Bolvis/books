@@ -1,19 +1,17 @@
 package model
 
 import (
-	"database/sql"
 	"fmt"
+	"github.com/jinzhu/gorm"
 	"strings"
 
 	_ "github.com/lib/pq"
 )
 
-func SetupModels() *sql.DB {
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbName)
+func SetupModels() *gorm.DB {
+	psqlInfo := fmt.Sprintf(psqlInfoFormat, host, port, user, password, dbName)
 
-	db, err := sql.Open("postgres", psqlInfo)
+	db, err := gorm.Open(dbDriver, psqlInfo)
 
 	if err != nil {
 		panic(strings.Join([]string{"Can't connect to database", err.Error()}, " -> "))
