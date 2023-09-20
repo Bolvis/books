@@ -2,6 +2,7 @@ package api
 
 import (
 	"books/model"
+	"fmt"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -18,5 +19,7 @@ func StartServer() {
 	})
 	setupRoutes(router)
 
-	router.Run(strings.Join([]string{"localhost", port}, ":"))
+	if err := router.Run(strings.Join([]string{"localhost", port}, ":")); err != nil {
+		fmt.Printf(err.Error(), gin.Logger())
+	}
 }
