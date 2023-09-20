@@ -6,6 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type teapot struct {
+	Teapot string `json:"teapot"`
+}
+
 func makeCoffee(c *gin.Context) {
-	c.Status(http.StatusTeapot)
+	c.JSON(http.StatusTeapot, teapot{Teapot: "teapot"})
 }
