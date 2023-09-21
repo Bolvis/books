@@ -2,11 +2,11 @@ package api
 
 import (
 	"books/model"
-	"github.com/jinzhu/gorm"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
 )
 
 func addBook(c *gin.Context) {

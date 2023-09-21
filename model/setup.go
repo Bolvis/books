@@ -2,9 +2,9 @@ package model
 
 import (
 	"fmt"
-	"github.com/jinzhu/gorm"
 	"strings"
 
+	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
 )
 
